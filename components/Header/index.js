@@ -36,6 +36,6 @@ function Header() {
   
   let headerContainer = document.querySelector('.header-container');
   
-  let show = Header();
+  let applyHeader = Header();
   
-  headerContainer.appendChild(show);
+  headerContainer.appendChild(applyHeader);
