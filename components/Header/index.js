@@ -32,10 +32,10 @@ function Header() {
   }
   
   
-  console.log(Header());
+//   console.log(Header()); // testing the header function we created
   
-  let headerContainer = document.querySelector('.header-container');
+  let headerContainer = document.querySelector('.header-container'); // selecting the .header-container div in Javascript
   
-  let applyHeader = Header();
+  let applyHeader = Header(); // turning the header function into a variable so that we use it as an argument
   
-  headerContainer.appendChild(applyHeader);
+  headerContainer.appendChild(applyHeader); // attaching the header function to the HTML by passing it as an argument
