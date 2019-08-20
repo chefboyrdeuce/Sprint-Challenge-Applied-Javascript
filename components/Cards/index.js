@@ -17,3 +17,58 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+
+
+
+function createCard(article) {
+    const cardDiv = document.createElement('div')
+    cardDiv.classList.add('card')
+    
+    const headlineDiv = document.createElement('div')
+    headlineDiv.classList.add('headline')
+    headlineDiv.textContent = article.headline
+
+    const authorDiv = document.createElement('div')
+    authorDiv.classList.add('author')
+
+    const imgDiv = document.createElement('div')
+    imgDiv.classList.add('img-container')
+
+    const image = document.createElement('img')
+    image.src = article.authorPhoto
+
+    const span = document.createElement('span')
+    span.textContent = `By ${article.authorName}`
+
+    cardDiv.appendChild(headlineDiv)
+    cardDiv.appendChild(authorDiv)
+    authorDiv.appendChild(imgDiv)
+    imgDiv.appendChild(image)
+    authorDiv.appendChild(span)
+
+    return cardDiv
+}
+
+// console.log(createCard('Hello World', 'https://picsum.photos/200/300', 'John Doe'))
+
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+.then((response) => {
+    // console.log(response.data.articles)
+    response.data.articles.bootstrap.forEach((e)=> {
+        document.querySelector('.cards-container').appendChild(createCard(e))
+    })
+    response.data.articles.technology.forEach((e)=> {
+        document.querySelector('.cards-container').appendChild(createCard(e))
+    })
+    response.data.articles.jquery.forEach((e)=> {
+        document.querySelector('.cards-container').appendChild(createCard(e))
+    })
+    response.data.articles.node.forEach((e)=> {
+        document.querySelector('.cards-container').appendChild(createCard(e))
+    })
+
+})
+.catch((error) => {
+    console.log('Network request was unsuccesful')
+    console.log(error)
+})
